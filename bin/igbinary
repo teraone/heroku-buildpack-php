@@ -1,7 +1,7 @@
 #!/bin/bash
 # Build Path: /app/.heroku/php/
 dep_url=https://github.com/igbinary/igbinary.git
-igbinary_dir=cphalcon
+igbinary_dir=igbinary
 echo "-----> Building Igbinary..."
 
 ### Igbinary

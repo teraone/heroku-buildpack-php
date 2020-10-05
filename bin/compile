@@ -244,8 +244,6 @@ curl_retry_on_18 --fail --silent --location -o $build_dir/.heroku/composer.tar.g
 tar xzf $build_dir/.heroku/composer.tar.gz -C $build_dir/.heroku/php
 rm $build_dir/.heroku/composer.tar.gz
 
-source $bp_dir/bin/igbinary
-
 # this alias is just for now while we install platform packages
 composer() {
 	/app/.heroku/php-min/bin/php /app/.heroku/php/bin/composer "$@"
@@ -392,6 +390,8 @@ export HEROKU_PHP_DEFAULT_RUNTIME_VERSION
 		error "$composer_lock_parse_error"
 	fi
 }
+
+source $bp_dir/bin/igbinary
 
 # reset COMPOSER for the platform install step
 COMPOSER_bak="$COMPOSER"

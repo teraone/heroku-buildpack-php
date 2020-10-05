@@ -14,6 +14,9 @@ if [ ! -d "$igbinary_dir" ]; then
   exit
 fi
 
+cd igbinary
+echo $PWD
+
 BUILD_DIR=$1
 ln -s $BUILD_DIR/.heroku /app/.heroku
 export PATH=/app/.heroku/php/bin:$PATH

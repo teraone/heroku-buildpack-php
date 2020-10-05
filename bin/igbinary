@@ -11,7 +11,6 @@ if [ ! -d "$igbinary_dir" ]; then
   echo "[ERROR] Failed to find igbinary directory $igbinary_dir"
   exit
 fi
-cd $igbinary_dir/build
 
 BUILD_DIR=$1
 ln -s $BUILD_DIR/.heroku /app/.heroku

@@ -244,7 +244,7 @@ curl_retry_on_18 --fail --silent --location -o $build_dir/.heroku/composer.tar.g
 tar xzf $build_dir/.heroku/composer.tar.gz -C $build_dir/.heroku/php
 rm $build_dir/.heroku/composer.tar.gz
 
-source $BP_DIR/bin/igbinary
+source $bp_dir/bin/igbinary
 
 # this alias is just for now while we install platform packages
 composer() {

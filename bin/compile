@@ -391,8 +391,6 @@ export HEROKU_PHP_DEFAULT_RUNTIME_VERSION
 	fi
 }
 
-source $bp_dir/bin/igbinary
-
 # reset COMPOSER for the platform install step
 COMPOSER_bak="$COMPOSER"
 export COMPOSER=composer.json

@@ -1,10 +1,27 @@
 #!/bin/bash
+# Build Path: /app/.heroku/php/
+dep_url=https://github.com/igbinary/igbinary.git
+igbinary_dir=igbinary
+echo "-----> Building Igbinary..."
 
-	if [[ "$engine" == "php" ]] && ! $engine -n $(which composer) show -d "$build_dir/.heroku/php" --installed --quiet heroku-sys/ext-igbinary 2>/dev/null; then
-		if $engine -n $(which composer) require --update-no-dev -d "$build_dir/.heroku/php" -- "heroku-sys/ext-igbinary:*" >> $build_dir/.heroku/php/install.log 2>&1; then
-			echo "- New Relic detected, installed ext-igbinary" | indent
-		else
-			mcount "warnings.addons.newrelic.extension_missing"
-			warning_inline "New Relic detected, but no suitable extension (igbinary) available"
-		fi
-	fi
+echo $PWD
+
+### Igbinary
+echo "[LOG] Downloading igbinary"
+git clone -b 3.1.5 $dep_url -q
+if [ ! -d "$igbinary_dir" ]; then
+  echo "[ERROR] Failed to find igbinary directory $igbinary_dir"
+  exit
+fi
+
+BUILD_DIR=$1
+ln -s $BUILD_DIR/.heroku /app/.heroku
+export PATH=/app/.heroku/php/bin:$PATH
+phpize
+./configure --enable-igbinary --with-php-config=$PHP_ROOT/bin/php-config
+make
+make install
+
+cd
+echo "import extension igbinary into php.ini"
+echo "extension=igbinary.so" >> /app/.heroku/php/etc/php/php.ini

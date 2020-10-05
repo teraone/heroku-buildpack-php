@@ -21,7 +21,7 @@ BUILD_DIR=$1
 ln -s $BUILD_DIR/.heroku /app/.heroku
 export PATH=/app/.heroku/php/bin:$PATH
 phpize
-./configure --enable-igbinary --with-php-config=$PHP_ROOT/bin/php-config
+./configure --enable-igbinary --with-php-config=/app/.heroku/php/bin/php-config
 make
 make install
 

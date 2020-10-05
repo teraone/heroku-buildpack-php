@@ -25,6 +25,6 @@ phpize
 make
 make install
 
-cd
+cd ..
 echo "import extension igbinary into php.ini"
 echo "extension=igbinary.so" >> /app/.heroku/php/etc/php/php.ini

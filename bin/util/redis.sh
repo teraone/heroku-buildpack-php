@@ -18,8 +18,10 @@ cd phpredis
 echo $PWD
 
 BUILD_DIR=$1
-ln -s $BUILD_DIR/.heroku /app/.heroku
-export PATH=/app/.heroku/php/bin:$PATH
+
+#already called within igbinary.sh
+#ln -s $BUILD_DIR/.heroku /app/.heroku
+#export PATH=/app/.heroku/php/bin:$PATH
 phpize
 ./configure --enable-redis-igbinary --with-php-config=/app/.heroku/php/bin/php-config
 make
